@@ -40,3 +40,12 @@ function xScale(data, chosenXAxis) {
   return xLinearScale;
 
 }
+// function used for updating y-scale var upon click on axis label
+function yScale(data, chosenYAxis) {
+    
+  var yLinearScale = d3.scaleLinear()
+  .domain([0, d3.max(data, d => d[chosenYAxis])])
+  .range([height, 0]);
+  console.log(yLinearScale)
+  return yLinearScale;
+}
