@@ -159,3 +159,51 @@ console.log(circlesGroup)
 
   return circlesGroup;
 }
+
+// Retrieve data from the CSV file and execute everything below
+d3.csv("assets/data/data.csv").then(function(journalistData, err) {
+  if (err) throw err;
+  // parse data
+  journalistData.forEach(function(data) {
+    data.poverty = +data.poverty;
+    data.healthcare = +data.healthcare;
+    data.age = +data.age;
+    data.smokes = +data.smokes;
+    data.income = +data.income;
+    data.obesity = +data.obesity;
+    // data.abbr= +data.abbr;
+    // console.log(data.abbr);
+  });
+
+  // xLinearScale function above csv import
+  var xLinearScale = xScale(journalistData, chosenXAxis);
+
+  // Create y scale function
+  var yLinearScale = yScale(journalistData, chosenYAxis);
+
+
+  // Create initial axis functions
+  var bottomAxis = d3.axisBottom(xLinearScale);
+  var leftAxis = d3.axisLeft(yLinearScale);
+
+  // append x axis
+  var xAxis = chartGroup.append("g")
+    .classed("x-axis", true)
+    .attr("transform", `translate(0, ${height})`)
+    .call(bottomAxis);
+
+  // append y axis
+  var yAxis =chartGroup.append("g")
+    .classed("y-axis", true)
+    .call(leftAxis);
+  // append initial circles
+  var circlesGroup = chartGroup.selectAll("circle")
+    .data(journalistData)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xLinearScale(d[chosenXAxis]))
+    .attr("cy", d => yLinearScale(d[chosenYAxis]))
+    .attr("r", 10)
+    .attr("fill", "blue")
+    .attr("opacity", ".2")  ;
+    
