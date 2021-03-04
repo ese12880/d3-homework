@@ -86,3 +86,76 @@ function renderYCircles(circlesGroup, newYScale, chosenYAxis) {
 
   return circlesGroup;
 }
+return circlesGroup;
+}
+// function used for updating circles group with new tooltip
+function updateXToolTip(chosenXAxis, circlesGroup) {
+
+  var label;
+
+  if (chosenXAxis === "poverty") {
+    label = "In Poverty(%)";
+  }
+  else if (chosenXAxis === "age"){
+    label = "Age(Median)";
+  }
+  else{
+    label = "Household Income(Median)";
+  }
+  var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([10, -10])
+    .html(function(d) {
+      return (`${d.state}<br>${chosenXAxis} : ${d.povertyMoe}`);
+    });
+  console.log(toolTip);
+  circlesGroup.call(toolTip);
+
+  circlesGroup.on("mouseover", function(data) {
+    toolTip.show(data);
+  })
+    // onmouseout event
+    .on("mouseout", function(data, index) {
+      toolTip.hide(data);
+    });
+
+  return circlesGroup;
+}
+
+// function used for updating circles group with new tooltip
+function updateYToolTip(chosenYAxis, circlesGroup) {
+console.log(chosenYAxis)
+console.log(circlesGroup)
+  var label;
+
+  if (chosenYAxis === "healthcare") {
+    label = "Lacks Healthcare(%)";
+  }
+  else if (chosenYAxis === "obesity"){
+    label = "Obese(%)";
+  }
+  else{
+    label = "Smokes(%)";
+  }
+  console.log(label);
+
+  var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([10, -10])
+    .html(function(d) {
+    return (`${d.state}<br>`);
+    
+    });
+    console.log(toolTip);
+  circlesGroup.call(toolTip);
+  // console.log(circlesGroup);
+  circlesGroup.on("mouseover", function(data) {
+    toolTip.show(data);
+  })
+    // onmouseout event
+    .on("mouseout", function(data, index) {
+      toolTip.hide(data);
+    });
+
+  return circlesGroup;
+}
