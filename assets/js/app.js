@@ -86,8 +86,8 @@ function renderYCircles(circlesGroup, newYScale, chosenYAxis) {
 
   return circlesGroup;
 }
-return circlesGroup;
-}
+//return circlesGroup;
+
 // function used for updating circles group with new tooltip
 function updateXToolTip(chosenXAxis, circlesGroup) {
 
@@ -207,3 +207,23 @@ d3.csv("assets/data/data.csv").then(function(journalistData, err) {
     .attr("fill", "blue")
     .attr("opacity", ".2")  ;
     
+    // console.log(circlesGroup);
+    //Adding text labels to the groups
+
+    // var abbrName= circlesGroup// Font size
+    journalistData.forEach(function(data) {
+      console.log(data.abbr)
+    });
+  var labelstagGroup = chartGroup.append("g")
+    .classed("label-axis", true)
+   
+    var labelTag= labelstagGroup.selectAll("text")
+    .data(journalistData)
+    .enter()
+    .append("text")
+    .text(d =>d.abbr)
+    .attr("x", d => xLinearScale(d[chosenXAxis]))
+    .attr("y", d => yLinearScale(d[chosenYAxis]))
+    .classed("active", true)
+    .attr("font-size", "10px")
+    .style('fill', 'white') 
