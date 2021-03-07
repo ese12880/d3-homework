@@ -227,3 +227,63 @@ d3.csv("assets/data/data.csv").then(function(journalistData, err) {
     .classed("active", true)
     .attr("font-size", "10px")
     .style('fill', 'white') 
+
+     // Create group for  3 x- axis labels
+  var labelsXGroup = chartGroup.append("g")
+  .attr("transform", `translate(${width / 2}, ${height + 20})`);
+
+
+var povertyLabel = labelsXGroup.append("text")
+  .attr("x", 0)
+  .attr("y", 20)
+  .attr("value", "poverty") // value to grab for event listener
+  .classed("active", true)
+  .text("In Poverty(%)");
+
+var ageLabel = labelsXGroup.append("text")
+  .attr("x", 0)
+  .attr("y", 40)
+  .attr("value", "age") // value to grab for event listener
+  .classed("inactive", true)
+  .text("Age(Median)");
+
+var householdLabel = labelsXGroup.append("text")
+  .attr("x", 0)
+  .attr("y", 60)
+  .attr("value", "income") // value to grab for event listener
+  .classed("inactive", true)
+  .text("Household Income(Median)");
+// Create group for  3 x- axis labels
+// var labelsYGroup = chartGroup.append("g")
+// .attr("transform", `translate(${width / 2}, ${height + 20})`);
+// Create group for  3 y- axis labels
+var labelsYGroup = chartGroup.append("g")
+.classed("y-axis", true)
+
+// append y axis
+var healthcareLabel = labelsYGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 0 - margin.left)
+  .attr("x", 0 - (height / 2))
+  .attr("value", "healthcare")
+  .attr("dy", "4em")
+  .classed("active", true)
+  .text("Lacks Healthcare(%)");
+
+  var smokesLabel = labelsYGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 0 - margin.left)
+  .attr("x", 0 - (height / 2))
+  .attr("value", "smokes")
+  .attr("dy", "3em")
+  .classed("inactive", true)
+  .text("Smokes(%)");
+
+  var obesityLabel = labelsYGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 0 - margin.left)
+  .attr("x", 0 - (height / 2))
+  .attr("value", "obesity")
+  .attr("dy", "2em")
+  .classed("inactive", true)
+  .text("Obese(%)");
