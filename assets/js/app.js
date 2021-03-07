@@ -226,7 +226,7 @@ d3.csv("assets/data/data.csv").then(function(journalistData, err) {
     .attr("y", d => yLinearScale(d[chosenYAxis]))
     .classed("active", true)
     .attr("font-size", "10px")
-    .style('fill', 'white') 
+    .style('fill', 'white'); 
 
      // Create group for  3 x- axis labels
   var labelsXGroup = chartGroup.append("g")
