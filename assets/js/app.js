@@ -207,7 +207,7 @@ d3.csv("assets/data/data.csv").then(function(journalistData, err) {
     .attr("fill", "blue")
     .attr("opacity", ".2")  ;
     
-    // console.log(circlesGroup);
+    console.log(circlesGroup);
     //Adding text labels to the groups
 
     // var abbrName= circlesGroup// Font size
@@ -254,8 +254,8 @@ var householdLabel = labelsXGroup.append("text")
   .classed("inactive", true)
   .text("Household Income(Median)");
 // Create group for  3 x- axis labels
-// var labelsYGroup = chartGroup.append("g")
-// .attr("transform", `translate(${width / 2}, ${height + 20})`);
+var labelsYGroup = chartGroup.append("g")
+.attr("transform", `translate(${width / 2}, ${height + 20})`);
 // Create group for  3 y- axis labels
 var labelsYGroup = chartGroup.append("g")
 .classed("y-axis", true)
@@ -286,4 +286,6 @@ var healthcareLabel = labelsYGroup.append("text")
   .attr("value", "obesity")
   .attr("dy", "2em")
   .classed("inactive", true)
-  .text("Obese(%)");
+  .text("Obese(%)")
+
+  
