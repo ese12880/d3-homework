@@ -313,3 +313,61 @@ var healthcareLabel = labelsYGroup.append("text")
 
         // updates tooltips with new info
         circlesGroup = updateXToolTip(chosenXAxis, circlesGroup);
+
+              // updates tooltips with new info
+              circlesGroup = updateXToolTip(chosenXAxis, circlesGroup);
+
+              // changes classes to change bold text
+              if (chosenXAxis === "age") {
+                ageLabel
+                  .classed("active", true)
+                  .classed("inactive", false)
+                povertyLabel
+                  .classed("active", false)
+                  .classed("inactive", true)
+                  
+                householdLabel
+                  .classed("active", false)
+                  .classed("inactive", true)
+              }
+              else if (chosenXAxis === "poverty"){
+                ageLabel
+                  .classed("active", false)
+                  .classed("inactive", true)
+                  .classed("label", false);;
+                  povertyLabel
+                  .classed("active", true)
+                  .classed("inactive", false)
+                  .classed("label", false);;
+                  householdLabel
+                  .classed("active", false)
+                  .classed("inactive", true)
+                  .classed("label", false);;
+              }
+              else{
+                ageLabel
+                .classed("active", false)
+                .classed("inactive", true)
+                .classed("label", false);
+                povertyLabel
+                .classed("active", false)
+                .classed("inactive", true)
+                .classed("label", false);;
+                householdLabel
+                .classed("active", true)
+                .classed("inactive", false)
+                .classed("label", false);
+              }
+      }
+    });
+        // });
+  labelsYGroup.selectAll("text")
+    .on("click", function() {
+        // get value of selection
+        var value = d3.select(this).attr("value");
+        if (value !== chosenYAxis) {
+          // replaces chosenXAxis with value
+          chosenYAxis = value;
+        }
+  });
+});
