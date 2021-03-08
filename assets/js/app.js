@@ -288,4 +288,28 @@ var healthcareLabel = labelsYGroup.append("text")
   .classed("inactive", true)
   .text("Obese(%)")
 
-  
+  // x axis labels event listener
+  labelsXGroup.selectAll("text")
+    .on("click", function() {
+      // get value of selection
+      var value = d3.select(this).attr("value");
+      if (value !== chosenXAxis) {
+        // replaces chosenXAxis with value
+        chosenXAxis = value;
+        // labelTag.classed("label-axis", true)
+        // .classed("active", false)
+   
+        // var labelTag
+        // console.log(chosenXAxis)
+        // labelTag.classed("active", false);
+        // functions here found above csv import
+        // updates x scale for new data
+        xLinearScale = xScale(journalistData, chosenXAxis);
+
+        // updates x axis with transition
+        xAxis = renderXAxes(xLinearScale, xAxis);
+        // updates circles with new x values
+        circlesGroup = renderXCircles(circlesGroup, xLinearScale, chosenXAxis);
+
+        // updates tooltips with new info
+        circlesGroup = updateXToolTip(chosenXAxis, circlesGroup);
