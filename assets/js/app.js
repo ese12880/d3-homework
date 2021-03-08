@@ -286,7 +286,7 @@ var healthcareLabel = labelsYGroup.append("text")
   .attr("value", "obesity")
   .attr("dy", "2em")
   .classed("inactive", true)
-  .text("Obese(%)")
+  .text("Obese(%)");
 
   // x axis labels event listener
   labelsXGroup.selectAll("text")
@@ -300,8 +300,8 @@ var healthcareLabel = labelsYGroup.append("text")
         // .classed("active", false)
    
         // var labelTag
-        // console.log(chosenXAxis)
-        // labelTag.classed("active", false);
+        console.log(chosenXAxis)
+        labelTag.classed("active", false);
         // functions here found above csv import
         // updates x scale for new data
         xLinearScale = xScale(journalistData, chosenXAxis);
