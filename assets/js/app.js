@@ -334,15 +334,15 @@ var healthcareLabel = labelsYGroup.append("text")
                 ageLabel
                   .classed("active", false)
                   .classed("inactive", true)
-                  .classed("label", false);;
+                  .classed("label", false);
                   povertyLabel
                   .classed("active", true)
                   .classed("inactive", false)
-                  .classed("label", false);;
+                  .classed("label", false);
                   householdLabel
                   .classed("active", false)
                   .classed("inactive", true)
-                  .classed("label", false);;
+                  .classed("label", false);
               }
               else{
                 ageLabel
@@ -352,7 +352,7 @@ var healthcareLabel = labelsYGroup.append("text")
                 povertyLabel
                 .classed("active", false)
                 .classed("inactive", true)
-                .classed("label", false);;
+                .classed("label", false);
                 householdLabel
                 .classed("active", true)
                 .classed("inactive", false)
