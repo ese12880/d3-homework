@@ -296,8 +296,8 @@ var healthcareLabel = labelsYGroup.append("text")
       if (value !== chosenXAxis) {
         // replaces chosenXAxis with value
         chosenXAxis = value;
-        // labelTag.classed("label-axis", true)
-        // .classed("active", false)
+        labelTag.classed("label-axis", true)
+        .classed("active", false)
    
         // var labelTag
         console.log(chosenXAxis)
@@ -372,4 +372,3 @@ var healthcareLabel = labelsYGroup.append("text")
   });
 });
 
-  
