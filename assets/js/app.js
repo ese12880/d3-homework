@@ -371,3 +371,60 @@ var healthcareLabel = labelsYGroup.append("text")
         }
   });
 });
+
+  // console.log(chosenXAxis)
+
+      // updates x scale for new data
+      yLinearScale = yScale(journalistData, chosenYAxis);
+
+      // updates x axis with transition
+      yAxis = renderYAxes(yLinearScale, yAxis);
+      // updates circles with new x values
+      console.log(circlesGroup);
+      circlesGroup = renderYCircles(circlesGroup, yLinearScale, chosenYAxis);
+      // console.log(circlesGroup);
+      // console.log(chosenYAxis);
+      // console.log(yLinearScale);
+      // updates tooltips with new info
+      console.log(yAxis)
+      circlesGroup = updateYToolTip(chosenYAxis, circlesGroup);
+      
+      // changes classes to change bold text
+      if (chosenYAxis === "healthcare") {
+        healthcareLabel
+          .classed("active", true)
+          .classed("inactive", false);
+          smokesLabel
+          .classed("active", false)
+          .classed("inactive", true);
+          obesityLabel
+          .classed("active", false)
+          .classed("inactive", true);
+      }
+      else if (chosenYAxis === "smokes"){
+        healthcareLabel
+          .classed("active", false)
+          .classed("inactive", true);
+          smokesLabel
+          .classed("active", true)
+          .classed("inactive", false);
+          obesityLabel
+          .classed("active", false)
+          .classed("inactive", true);
+      }
+      else{
+        healthcareLabel
+        .classed("active", false)
+        .classed("inactive", true);
+        smokesLabel
+        .classed("active", false)
+        .classed("inactive", true);
+        obesityLabel
+        .classed("active", true)
+        .classed("inactive", false);
+      }
+    }
+  });
+}).catch(function(error) {
+  console.log(error);
+});
